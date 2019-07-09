@@ -59,3 +59,487 @@ FOREIGN KEY ("todo_id")
   ↳ bin/rails:9
   [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
   ↳ bin/rails:9
+Started GET "/todos" for 127.0.0.1 at 2019-07-05 17:08:19 +0530
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /var/lib/gems/2.5.0/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+Processing by TodosController#index as */*
+  [1m[36mTodo Load (0.1ms)[0m  [1m[34mSELECT "todos".* FROM "todos"[0m
+  ↳ app/controllers/concerns/response.rb:3
+Completed 200 OK in 5ms (Views: 1.2ms | ActiveRecord: 0.4ms)
+
+
+Started POST "/todos" for 127.0.0.1 at 2019-07-05 17:09:33 +0530
+Processing by TodosController#create as HTML
+  Parameters: {"title"=>"Schedule", "created_by"=>"Haider", "todo"=>{"title"=>"Schedule", "created_by"=>"Haider"}}
+Unpermitted parameter: :todo
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/todos_controller.rb:12
+  [1m[36mTodo Create (0.2ms)[0m  [1m[32mINSERT INTO "todos" ("title", "created_by", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["title", "Schedule"], ["created_by", "Haider"], ["created_at", "2019-07-05 11:39:33.649694"], ["updated_at", "2019-07-05 11:39:33.649694"]]
+  ↳ app/controllers/todos_controller.rb:12
+  [1m[35m (270.2ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/todos_controller.rb:12
+Completed 201 Created in 282ms (Views: 1.4ms | ActiveRecord: 270.8ms)
+
+
+Started GET "/todos" for 127.0.0.1 at 2019-07-05 17:09:40 +0530
+Processing by TodosController#index as */*
+  [1m[36mTodo Load (0.1ms)[0m  [1m[34mSELECT "todos".* FROM "todos"[0m
+  ↳ app/controllers/concerns/response.rb:3
+Completed 200 OK in 5ms (Views: 4.4ms | ActiveRecord: 0.1ms)
+
+
+Started PUT "/todos/1" for 127.0.0.1 at 2019-07-05 17:10:21 +0530
+Processing by TodosController#update as HTML
+  Parameters: {"title"=>"Coding", "id"=>"1", "todo"=>{"title"=>"Coding"}}
+  [1m[36mTodo Load (0.2ms)[0m  [1m[34mSELECT  "todos".* FROM "todos" WHERE "todos"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/todos_controller.rb:35
+Unpermitted parameters: :id, :todo
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/todos_controller.rb:23
+  [1m[36mTodo Update (0.2ms)[0m  [1m[33mUPDATE "todos" SET "title" = ?, "updated_at" = ? WHERE "todos"."id" = ?[0m  [["title", "Coding"], ["updated_at", "2019-07-05 11:40:21.045197"], ["id", 1]]
+  ↳ app/controllers/todos_controller.rb:23
+  [1m[35m (269.6ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/todos_controller.rb:23
+Completed 204 No Content in 278ms (ActiveRecord: 269.9ms)
+
+
+Started GET "/todos" for 127.0.0.1 at 2019-07-05 17:10:31 +0530
+Processing by TodosController#index as */*
+  [1m[36mTodo Load (0.1ms)[0m  [1m[34mSELECT "todos".* FROM "todos"[0m
+  ↳ app/controllers/concerns/response.rb:3
+Completed 200 OK in 1ms (Views: 0.7ms | ActiveRecord: 0.1ms)
+
+
+Started DELETE "/todos/1" for 127.0.0.1 at 2019-07-05 17:11:26 +0530
+Processing by TodosController#destroy as */*
+  Parameters: {"id"=>"1"}
+  [1m[36mTodo Load (0.1ms)[0m  [1m[34mSELECT  "todos".* FROM "todos" WHERE "todos"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/todos_controller.rb:35
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/todos_controller.rb:29
+  [1m[36mItem Load (0.1ms)[0m  [1m[34mSELECT "items".* FROM "items" WHERE "items"."todo_id" = ?[0m  [["todo_id", 1]]
+  ↳ app/controllers/todos_controller.rb:29
+  [1m[36mTodo Destroy (0.7ms)[0m  [1m[31mDELETE FROM "todos" WHERE "todos"."id" = ?[0m  [["id", 1]]
+  ↳ app/controllers/todos_controller.rb:29
+  [1m[35m (199.8ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/todos_controller.rb:29
+Completed 204 No Content in 217ms (ActiveRecord: 201.0ms)
+
+
+Started GET "/todos" for 127.0.0.1 at 2019-07-05 17:11:28 +0530
+Processing by TodosController#index as */*
+  [1m[36mTodo Load (0.1ms)[0m  [1m[34mSELECT "todos".* FROM "todos"[0m
+  ↳ app/controllers/concerns/response.rb:3
+Completed 200 OK in 1ms (Views: 0.5ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/todos" for 127.0.0.1 at 2019-07-08 15:08:36 +0530
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /var/lib/gems/2.5.0/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+Processing by TodosController#index as */*
+  [1m[36mTodo Load (0.1ms)[0m  [1m[34mSELECT "todos".* FROM "todos"[0m
+  ↳ app/controllers/concerns/response.rb:3
+Completed 200 OK in 4ms (Views: 0.9ms | ActiveRecord: 0.3ms)
+
+
+Started POST "/todos" for 127.0.0.1 at 2019-07-08 15:09:41 +0530
+Processing by TodosController#create as HTML
+  Parameters: {"title"=>"Coding", "created_by"=>"Haider", "todo"=>{"title"=>"Coding", "created_by"=>"Haider"}}
+Unpermitted parameter: :todo
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/todos_controller.rb:12
+  [1m[36mTodo Create (0.6ms)[0m  [1m[32mINSERT INTO "todos" ("title", "created_by", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["title", "Coding"], ["created_by", "Haider"], ["created_at", "2019-07-08 09:39:41.872867"], ["updated_at", "2019-07-08 09:39:41.872867"]]
+  ↳ app/controllers/todos_controller.rb:12
+  [1m[35m (198.5ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/todos_controller.rb:12
+Completed 201 Created in 209ms (Views: 1.3ms | ActiveRecord: 199.5ms)
+
+
+Started POST "/todos" for 127.0.0.1 at 2019-07-08 15:09:58 +0530
+Processing by TodosController#create as HTML
+  Parameters: {"title"=>"Dev", "created_by"=>"Haider", "todo"=>{"title"=>"Dev", "created_by"=>"Haider"}}
+Unpermitted parameter: :todo
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/todos_controller.rb:12
+  [1m[36mTodo Create (0.6ms)[0m  [1m[32mINSERT INTO "todos" ("title", "created_by", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["title", "Dev"], ["created_by", "Haider"], ["created_at", "2019-07-08 09:39:58.297758"], ["updated_at", "2019-07-08 09:39:58.297758"]]
+  ↳ app/controllers/todos_controller.rb:12
+  [1m[35m (248.8ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/todos_controller.rb:12
+Completed 201 Created in 255ms (Views: 1.0ms | ActiveRecord: 249.4ms)
+
+
+Started GET "/todos" for 127.0.0.1 at 2019-07-08 15:10:07 +0530
+Processing by TodosController#index as */*
+  [1m[36mTodo Load (0.1ms)[0m  [1m[34mSELECT "todos".* FROM "todos"[0m
+  ↳ app/controllers/concerns/response.rb:3
+Completed 200 OK in 5ms (Views: 4.3ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/todos/2/items" for 127.0.0.1 at 2019-07-08 15:10:28 +0530
+Processing by ItemsController#index as */*
+  Parameters: {"todo_id"=>"2"}
+Completed 404 Not Found in 1ms (Views: 0.1ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/todos/2/items" for 127.0.0.1 at 2019-07-08 15:11:21 +0530
+Processing by ItemsController#create as HTML
+  Parameters: {"name"=>"Java", "todo_id"=>"2", "item"=>{"name"=>"Java"}}
+Completed 404 Not Found in 0ms (Views: 0.1ms | ActiveRecord: 0.2ms)
+
+
+Started POST "/todos/1/items" for 127.0.0.1 at 2019-07-08 15:11:39 +0530
+Processing by ItemsController#create as HTML
+  Parameters: {"name"=>"Java", "todo_id"=>"1", "item"=>{"name"=>"Java"}}
+Completed 404 Not Found in 0ms (Views: 0.1ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/todos/2/items" for 127.0.0.1 at 2019-07-08 15:11:51 +0530
+Processing by ItemsController#create as HTML
+  Parameters: {"name"=>"Java", "done"=>"false", "todo_id"=>"2", "item"=>{"name"=>"Java", "done"=>"false"}}
+Completed 404 Not Found in 0ms (Views: 0.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/todos/" for 127.0.0.1 at 2019-07-08 15:12:48 +0530
+Processing by TodosController#index as */*
+  [1m[36mTodo Load (0.1ms)[0m  [1m[34mSELECT "todos".* FROM "todos"[0m
+  ↳ app/controllers/concerns/response.rb:3
+Completed 200 OK in 1ms (Views: 0.8ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/todos/1" for 127.0.0.1 at 2019-07-08 15:13:01 +0530
+Processing by TodosController#show as */*
+  Parameters: {"id"=>"1"}
+  [1m[36mTodo Load (0.1ms)[0m  [1m[34mSELECT  "todos".* FROM "todos" WHERE "todos"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/todos_controller.rb:35
+Completed 404 Not Found in 1ms (Views: 0.1ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/todos/2" for 127.0.0.1 at 2019-07-08 15:13:05 +0530
+Processing by TodosController#show as */*
+  Parameters: {"id"=>"2"}
+  [1m[36mTodo Load (0.1ms)[0m  [1m[34mSELECT  "todos".* FROM "todos" WHERE "todos"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/todos_controller.rb:35
+Completed 200 OK in 1ms (Views: 0.3ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/todos/3" for 127.0.0.1 at 2019-07-08 15:13:08 +0530
+Processing by TodosController#show as */*
+  Parameters: {"id"=>"3"}
+  [1m[36mTodo Load (0.1ms)[0m  [1m[34mSELECT  "todos".* FROM "todos" WHERE "todos"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/todos_controller.rb:35
+Completed 200 OK in 1ms (Views: 0.3ms | ActiveRecord: 0.1ms)
+
+
+Started POST "/todos/3/items" for 127.0.0.1 at 2019-07-08 15:14:22 +0530
+Processing by ItemsController#create as */*
+  Parameters: {"todo_id"=>"3"}
+Completed 404 Not Found in 0ms (Views: 0.1ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/todos/3/items" for 127.0.0.1 at 2019-07-08 15:14:45 +0530
+Processing by ItemsController#create as HTML
+  Parameters: {"name"=>"asd", "done"=>"false", "todo_id"=>"3", "item"=>{"name"=>"asd", "done"=>"false"}}
+Completed 404 Not Found in 0ms (Views: 0.1ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/todos/3/items/" for 127.0.0.1 at 2019-07-08 15:14:58 +0530
+Processing by ItemsController#create as HTML
+  Parameters: {"name"=>"asd", "done"=>"false", "todo_id"=>"3", "item"=>{"name"=>"asd", "done"=>"false"}}
+Completed 404 Not Found in 0ms (Views: 0.1ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/todos/3/items/3" for 127.0.0.1 at 2019-07-08 15:15:02 +0530
+  
+ActionController::RoutingError (No route matches [POST] "/todos/3/items/3"):
+  
+actionpack (5.2.3) lib/action_dispatch/middleware/debug_exceptions.rb:65:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (5.2.3) lib/rails/rack/logger.rb:38:in `call_app'
+railties (5.2.3) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (5.2.3) lib/active_support/tagged_logging.rb:71:in `block in tagged'
+activesupport (5.2.3) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (5.2.3) lib/active_support/tagged_logging.rb:71:in `tagged'
+railties (5.2.3) lib/rails/rack/logger.rb:26:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.0.7) lib/rack/runtime.rb:22:in `call'
+activesupport (5.2.3) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/static.rb:127:in `call'
+rack (2.0.7) lib/rack/sendfile.rb:111:in `call'
+railties (5.2.3) lib/rails/engine.rb:524:in `call'
+puma (3.12.1) lib/puma/configuration.rb:227:in `call'
+puma (3.12.1) lib/puma/server.rb:660:in `handle_request'
+puma (3.12.1) lib/puma/server.rb:474:in `process_client'
+puma (3.12.1) lib/puma/server.rb:334:in `block in run'
+puma (3.12.1) lib/puma/thread_pool.rb:135:in `block in spawn_thread'
+Started GET "/todos/3/items/" for 127.0.0.1 at 2019-07-08 15:16:16 +0530
+Processing by ItemsController#index as */*
+  Parameters: {"todo_id"=>"3"}
+Completed 404 Not Found in 0ms (Views: 0.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/todos/3/items" for 127.0.0.1 at 2019-07-08 15:16:20 +0530
+Processing by ItemsController#index as */*
+  Parameters: {"todo_id"=>"3"}
+Completed 404 Not Found in 0ms (Views: 0.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/todos/2/items" for 127.0.0.1 at 2019-07-08 15:19:51 +0530
+Processing by ItemsController#index as */*
+  Parameters: {"todo_id"=>"2"}
+Completed 404 Not Found in 0ms (Views: 0.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/todos/2/items" for 127.0.0.1 at 2019-07-08 15:25:02 +0530
+Processing by ItemsController#index as */*
+  Parameters: {"todo_id"=>"2"}
+Completed 404 Not Found in 0ms (Views: 0.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/todos/2/" for 127.0.0.1 at 2019-07-08 15:25:36 +0530
+Processing by TodosController#show as */*
+  Parameters: {"id"=>"2"}
+  [1m[36mTodo Load (0.1ms)[0m  [1m[34mSELECT  "todos".* FROM "todos" WHERE "todos"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/todos_controller.rb:35
+Completed 200 OK in 1ms (Views: 0.3ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/todos/2/items" for 127.0.0.1 at 2019-07-08 15:25:42 +0530
+Processing by ItemsController#index as */*
+  Parameters: {"todo_id"=>"2"}
+Completed 404 Not Found in 0ms (Views: 0.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/todos/" for ::1 at 2019-07-08 15:29:26 +0530
+Processing by TodosController#index as HTML
+  [1m[36mTodo Load (0.2ms)[0m  [1m[34mSELECT "todos".* FROM "todos"[0m
+  ↳ app/controllers/concerns/response.rb:3
+Completed 200 OK in 2ms (Views: 1.7ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/favicon.ico" for ::1 at 2019-07-08 15:29:27 +0530
+  
+ActionController::RoutingError (No route matches [GET] "/favicon.ico"):
+  
+actionpack (5.2.3) lib/action_dispatch/middleware/debug_exceptions.rb:65:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (5.2.3) lib/rails/rack/logger.rb:38:in `call_app'
+railties (5.2.3) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (5.2.3) lib/active_support/tagged_logging.rb:71:in `block in tagged'
+activesupport (5.2.3) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (5.2.3) lib/active_support/tagged_logging.rb:71:in `tagged'
+railties (5.2.3) lib/rails/rack/logger.rb:26:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.0.7) lib/rack/runtime.rb:22:in `call'
+activesupport (5.2.3) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/static.rb:127:in `call'
+rack (2.0.7) lib/rack/sendfile.rb:111:in `call'
+railties (5.2.3) lib/rails/engine.rb:524:in `call'
+puma (3.12.1) lib/puma/configuration.rb:227:in `call'
+puma (3.12.1) lib/puma/server.rb:660:in `handle_request'
+puma (3.12.1) lib/puma/server.rb:474:in `process_client'
+puma (3.12.1) lib/puma/server.rb:334:in `block in run'
+puma (3.12.1) lib/puma/thread_pool.rb:135:in `block in spawn_thread'
+Started GET "/todos/2" for ::1 at 2019-07-08 15:29:31 +0530
+Processing by TodosController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mTodo Load (0.3ms)[0m  [1m[34mSELECT  "todos".* FROM "todos" WHERE "todos"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/todos_controller.rb:35
+Completed 200 OK in 3ms (Views: 0.7ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/todos/2/items" for ::1 at 2019-07-08 15:29:36 +0530
+Processing by ItemsController#index as HTML
+  Parameters: {"todo_id"=>"2"}
+Completed 404 Not Found in 1ms (Views: 0.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/todos/2/items" for ::1 at 2019-07-08 15:30:10 +0530
+Processing by ItemsController#index as HTML
+  Parameters: {"todo_id"=>"2"}
+Completed 404 Not Found in 4ms (Views: 0.2ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/todos/2/items" for ::1 at 2019-07-08 15:31:32 +0530
+Processing by ItemsController#index as HTML
+  Parameters: {"todo_id"=>"2"}
+  [1m[36mTodo Load (0.2ms)[0m  [1m[34mSELECT  "todos".* FROM "todos" WHERE "todos"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/items_controller.rb:40
+  [1m[36mItem Load (0.1ms)[0m  [1m[34mSELECT "items".* FROM "items" WHERE "items"."todo_id" = ?[0m  [["todo_id", 2]]
+  ↳ app/controllers/concerns/response.rb:3
+Completed 200 OK in 17ms (Views: 2.7ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/todos/2/items" for 127.0.0.1 at 2019-07-08 15:31:40 +0530
+Processing by ItemsController#index as */*
+  Parameters: {"todo_id"=>"2"}
+  [1m[36mTodo Load (0.1ms)[0m  [1m[34mSELECT  "todos".* FROM "todos" WHERE "todos"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/items_controller.rb:40
+  [1m[36mItem Load (0.1ms)[0m  [1m[34mSELECT "items".* FROM "items" WHERE "items"."todo_id" = ?[0m  [["todo_id", 2]]
+  ↳ app/controllers/concerns/response.rb:3
+Completed 200 OK in 1ms (Views: 0.6ms | ActiveRecord: 0.2ms)
+
+
+Started POST "/todos/" for 127.0.0.1 at 2019-07-08 15:33:54 +0530
+Processing by TodosController#create as */*
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/todos_controller.rb:12
+  [1m[35m (0.0ms)[0m  [1m[31mrollback transaction[0m
+  ↳ app/controllers/todos_controller.rb:12
+Completed 422 Unprocessable Entity in 3ms (Views: 0.2ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/todos/" for 127.0.0.1 at 2019-07-08 15:34:03 +0530
+Processing by TodosController#index as */*
+  [1m[36mTodo Load (0.1ms)[0m  [1m[34mSELECT "todos".* FROM "todos"[0m
+  ↳ app/controllers/concerns/response.rb:3
+Completed 200 OK in 1ms (Views: 0.8ms | ActiveRecord: 0.1ms)
+
+
+Started POST "/todos/2/items" for 127.0.0.1 at 2019-07-08 15:34:37 +0530
+Processing by ItemsController#create as HTML
+  Parameters: {"name"=>"Ruby", "done"=>"false", "todo_id"=>"2", "item"=>{"name"=>"Ruby", "done"=>"false"}}
+  [1m[36mTodo Load (0.1ms)[0m  [1m[34mSELECT  "todos".* FROM "todos" WHERE "todos"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/items_controller.rb:40
+Unpermitted parameters: :todo_id, :item
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/items_controller.rb:17
+  [1m[36mItem Create (0.3ms)[0m  [1m[32mINSERT INTO "items" ("name", "done", "todo_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "Ruby"], ["done", 0], ["todo_id", 2], ["created_at", "2019-07-08 10:04:37.678635"], ["updated_at", "2019-07-08 10:04:37.678635"]]
+  ↳ app/controllers/items_controller.rb:17
+  [1m[35m (212.2ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/items_controller.rb:17
+Completed 201 Created in 231ms (Views: 1.2ms | ActiveRecord: 212.9ms)
+
+
+Started GET "/todos/2/items" for 127.0.0.1 at 2019-07-08 15:35:18 +0530
+Processing by ItemsController#index as */*
+  Parameters: {"todo_id"=>"2"}
+  [1m[36mTodo Load (0.1ms)[0m  [1m[34mSELECT  "todos".* FROM "todos" WHERE "todos"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/items_controller.rb:40
+  [1m[36mItem Load (0.1ms)[0m  [1m[34mSELECT "items".* FROM "items" WHERE "items"."todo_id" = ?[0m  [["todo_id", 2]]
+  ↳ app/controllers/concerns/response.rb:3
+Completed 200 OK in 2ms (Views: 0.8ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/todos/2/items" for 127.0.0.1 at 2019-07-08 15:39:25 +0530
+Processing by ItemsController#index as */*
+  Parameters: {"todo_id"=>"2"}
+  [1m[36mTodo Load (0.1ms)[0m  [1m[34mSELECT  "todos".* FROM "todos" WHERE "todos"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/items_controller.rb:40
+  [1m[36mItem Load (0.2ms)[0m  [1m[34mSELECT "items".* FROM "items" WHERE "items"."todo_id" = ?[0m  [["todo_id", 2]]
+  ↳ app/controllers/concerns/response.rb:3
+Completed 200 OK in 16ms (Views: 6.4ms | ActiveRecord: 1.4ms)
+
+
+Started GET "/todos/2/items/1" for 127.0.0.1 at 2019-07-08 15:42:15 +0530
+Processing by ItemsController#show as */*
+  Parameters: {"todo_id"=>"2", "id"=>"1"}
+  [1m[36mTodo Load (0.1ms)[0m  [1m[34mSELECT  "todos".* FROM "todos" WHERE "todos"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/items_controller.rb:40
+  [1m[36mItem Load (0.1ms)[0m  [1m[34mSELECT  "items".* FROM "items" WHERE "items"."todo_id" = ? AND "items"."id" IS NULL LIMIT ?[0m  [["todo_id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/items_controller.rb:44
+Completed 404 Not Found in 2ms (Views: 0.1ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/todos/2/items/1" for 127.0.0.1 at 2019-07-08 15:42:40 +0530
+Processing by ItemsController#show as */*
+  Parameters: {"todo_id"=>"2", "id"=>"1"}
+  [1m[36mTodo Load (0.1ms)[0m  [1m[34mSELECT  "todos".* FROM "todos" WHERE "todos"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/items_controller.rb:40
+  [1m[36mItem Load (0.1ms)[0m  [1m[34mSELECT  "items".* FROM "items" WHERE "items"."todo_id" = ? AND "items"."id" = ? LIMIT ?[0m  [["todo_id", 2], ["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/items_controller.rb:44
+Completed 200 OK in 16ms (Views: 0.4ms | ActiveRecord: 1.4ms)
+
+
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+Migrating to CreateUsers (20190708110819)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:9
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ db/migrate/20190708110819_create_users.rb:3
+  [1m[35m (0.3ms)[0m  [1m[35mCREATE TABLE "users" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "email" varchar, "password_digest" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ db/migrate/20190708110819_create_users.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20190708110819"]]
+  ↳ bin/rails:9
+  [1m[35m (383.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ bin/rails:9
+  [1m[36mActiveRecord::InternalMetadata Load (0.3ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  ↳ bin/rails:9
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:9
+  [1m[35m (0.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ bin/rails:9
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "environment"]]
+  ↳ bin/rails:9
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "environment"]]
+  ↳ bin/rails:9
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "environment"]]
+  ↳ bin/rails:9
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "items"[0m
+  ↳ db/schema.rb:15
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ db/schema.rb:15
+  [1m[35m (428.9ms)[0m  [1m[35mCREATE TABLE "items" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "done" boolean, "todo_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ db/schema.rb:15
+  [1m[35m (319.5ms)[0m  [1m[35mCREATE  INDEX "index_items_on_todo_id" ON "items" ("todo_id")[0m
+  ↳ db/schema.rb:15
+  [1m[35m (0.5ms)[0m  [1m[35mDROP TABLE IF EXISTS "todos"[0m
+  ↳ db/schema.rb:24
+  [1m[35m (319.2ms)[0m  [1m[35mCREATE TABLE "todos" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "title" varchar, "created_by" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ db/schema.rb:24
+  [1m[35m (0.4ms)[0m  [1m[35mDROP TABLE IF EXISTS "users"[0m
+  ↳ db/schema.rb:31
+  [1m[35m (340.6ms)[0m  [1m[35mCREATE TABLE "users" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "email" varchar, "password_digest" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ db/schema.rb:31
+  [1m[35m (356.9ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL PRIMARY KEY)[0m
+  ↳ db/schema.rb:13
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ db/schema.rb:13
+  [1m[35m (226.8ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES (20190708110819)[0m
+  ↳ db/schema.rb:13
+  [1m[35m (231.9ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES
+(20190705064532),
+(20190705064455);
+
+[0m
+  ↳ db/schema.rb:13
+  [1m[35m (327.3ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" varchar NOT NULL PRIMARY KEY, "value" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ db/schema.rb:13
+  [1m[36mActiveRecord::InternalMetadata Load (0.8ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  ↳ db/schema.rb:13
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/schema.rb:13
+  [1m[36mActiveRecord::InternalMetadata Create (0.8ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["key", "environment"], ["value", "development"], ["created_at", "2019-07-08 11:08:41.499666"], ["updated_at", "2019-07-08 11:08:41.499666"]]
+  ↳ db/schema.rb:13
+  [1m[35m (234.8ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/schema.rb:13
+  [1m[36mActiveRecord::InternalMetadata Load (0.3ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  ↳ bin/rails:9
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:9
+  [1m[36mActiveRecord::InternalMetadata Update (0.6ms)[0m  [1m[33mUPDATE "ar_internal_metadata" SET "value" = ?, "updated_at" = ? WHERE "ar_internal_metadata"."key" = ?[0m  [["value", "test"], ["updated_at", "2019-07-08 11:08:41.748671"], ["key", "environment"]]
+  ↳ bin/rails:9
+  [1m[35m (284.3ms)[0m  [1m[36mcommit transaction[0m
+  ↳ bin/rails:9
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  ↳ bin/rails:9
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:9
+  [1m[35m (0.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ bin/rails:9
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
